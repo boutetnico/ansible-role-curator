@@ -28,12 +28,12 @@ def test_curator_config_file(host, username, groupname, path):
 
 
 @pytest.mark.parametrize('username,groupname,path', [
-  ('root', 'adm', '/var/log/curator/curator.log'),
+  ('root', 'adm', '/var/log/curator'),
 ])
-def test_curator_log_file(host, username, groupname, path):
+def test_curator_log_directory(host, username, groupname, path):
     curator_config = host.file(path)
     assert curator_config.exists
-    assert curator_config.is_file
+    assert curator_config.is_directory
     assert curator_config.user == username
     assert curator_config.group == groupname
 
