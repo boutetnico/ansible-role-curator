@@ -1,0 +1,34 @@
+---
+- name: Install pip
+  package:
+    name: python-pip
+    state: present
+
+- name: Install curator
+  pip:
+    name: elasticsearch-curator
+    state: present
+
+- name: Ensure curator log path exists
+  file:
+    group: adm
+    name: "{{ curator_log_path }}"
+    owner: root
+    state: directory
+
+- name: Ensure curator config path exists
+  file:
+    group: root
+    name: "{{ curator_config_path }}"
+    owner: root
+    state: directory
+
+- name: Install curator config file
+  template:
+    dest: "{{ curator_config_path }}/curator.yml"
+    src: curator.yml.j2
+
+- name: Install curator action file
+  template:
+    dest: "{{ curator_config_path }}/actionfile.yml"
+    src: actionfile.yml.j2
