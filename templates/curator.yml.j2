@@ -2,21 +2,20 @@
 # Remember, leave a key empty if there is no value.  None will be a string,
 # not a Python "NoneType"
 client:
-  hosts:
-    - 127.0.0.1
-  port: 9200
-  url_prefix:
-  use_ssl: false
-  certificate:
-  client_cert:
-  client_key:
-  ssl_no_validate: false
-  http_auth:
-  timeout: 30
-  master_only: false
+  hosts: {{ curator_hosts }}
+  port: {{ curator_port }}
+  url_prefix: {{ curator_url_prefix }}
+  use_ssl: {{ curator_use_ssl | lower }}
+  certificate: {{ curator_certificate }}
+  client_cert: {{ curator_client_cert }}
+  client_key: {{ curator_client_key }}
+  ssl_no_validate: {{ curator_ssl_no_validate | lower }}
+  http_auth: {{ curator_http_auth }}
+  timeout: {{ curator_timeout }}
+  master_only: {{ curator_master_only | lower }}
 
 logging:
-  loglevel: "{{ curator_log_level }}"
-  logfile: "{{ curator_log_path }}/{{ curator_log_file }}"
-  logformat: default
-  blacklist: ['elasticsearch', 'urllib3']
+  loglevel: {{ curator_log_level }}
+  logfile: {{ curator_log_path }}/{{ curator_log_file }}
+  logformat: {{ curator_log_format }}
+  blacklist: {{ curator_log_blacklist }}

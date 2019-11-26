@@ -1,7 +1,24 @@
 ---
+curator_hosts:
+  - 127.0.0.1
+curator_port: 9200
+curator_url_prefix: ""
+curator_use_ssl: false
+curator_certificate: ""
+curator_client_cert: ""
+curator_client_key: ""
+curator_ssl_no_validate: false
+curator_http_auth: ""
+curator_timeout: 30
+curator_master_only: false
+
 curator_log_path: /var/log/curator
 curator_log_file: curator.log
 curator_log_level: INFO
+curator_log_format: default
+curator_log_blacklist:
+  - elasticsearch
+  - urllib3
 
 curator_config_path: /etc/curator
 
