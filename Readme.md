@@ -52,94 +52,94 @@ Example Playbook
 
     - hosts: all
       roles:
-      - role: ansible-role-curator
-        curator_actions:
-          actions:
-            1:
-              action: snapshot
-              description: >-
-                Snapshot filebeat- prefixed indices older than 1 day and younger
-                than 15 days (based on index creation_date) with the default
-                snapshot name pattern of 'curator-%Y%m%d%H%M%S'.
-                Wait for the snapshot to complete.  Do not skip the repository
-                filesystem access check.  Use the other options to create the snapshot.
-              options:
-                repository: my_backup
-                # Leaving name blank will result in the default 'curator-%Y%m%d%H%M%S'
-                name:
-                ignore_unavailable: false
-                include_global_state: true
-                partial: false
-                wait_for_completion: true
-                skip_repo_fs_check: false
-              filters:
-                - filtertype: pattern
-                  kind: prefix
-                  value: filebeat-
-                - filtertype: age
-                  source: creation_date
-                  direction: older
-                  unit: days
-                  unit_count: 1
-                - filtertype: age
-                  source: creation_date
-                  direction: younger
-                  unit: days
-                  unit_count: 15
-            2:
-              action: delete_snapshots
-              description: >-
-                Delete snapshots from the selected repository older than 7 days
-                (based on creation_date), for 'curator-' prefixed snapshots.
-              options:
-                repository: my_backup
-                ignore_empty_list: true
-              filters:
-                - filtertype: pattern
-                  kind: prefix
-                  value: curator-
-                  exclude:
-                - filtertype: age
-                  source: creation_date
-                  direction: older
-                  unit: days
-                  unit_count: 7
-            3:
-              action: close
-              description: >-
-                Close indices older than 30 days (based on index name), for filebeat-
-                prefixed indices.
-              options:
-                delete_aliases: false
-                ignore_empty_list: true
-              filters:
-                - filtertype: pattern
-                  kind: prefix
-                  value: filebeat-
-                - filtertype: age
-                  source: name
-                  direction: older
-                  timestring: '%Y.%m.%d'
-                  unit: days
-                  unit_count: 30
-            4:
-              action: delete_indices
-              description: >-
-                Delete indices older than 60 days (based on index name), for filebeat-
-                prefixed indices. Ignore the error if the filter does not result in an
-                actionable list of indices (ignore_empty_list) and exit cleanly.
-              options:
-                ignore_empty_list: true
-              filters:
-                - filtertype: pattern
-                  kind: prefix
-                  value: filebeat-
-                - filtertype: age
-                  source: name
-                  direction: older
-                  timestring: '%Y.%m.%d'
-                  unit: days
-                  unit_count: 60
+        - role: ansible-role-curator
+          curator_actions:
+            actions:
+              1:
+                action: snapshot
+                description: >-
+                  Snapshot filebeat- prefixed indices older than 1 day and younger
+                  than 15 days (based on index creation_date) with the default
+                  snapshot name pattern of 'curator-%Y%m%d%H%M%S'.
+                  Wait for the snapshot to complete.  Do not skip the repository
+                  filesystem access check.  Use the other options to create the snapshot.
+                options:
+                  repository: my_backup
+                  # Leaving name blank will result in the default 'curator-%Y%m%d%H%M%S'
+                  name:
+                  ignore_unavailable: false
+                  include_global_state: true
+                  partial: false
+                  wait_for_completion: true
+                  skip_repo_fs_check: false
+                filters:
+                  - filtertype: pattern
+                    kind: prefix
+                    value: filebeat-
+                  - filtertype: age
+                    source: creation_date
+                    direction: older
+                    unit: days
+                    unit_count: 1
+                  - filtertype: age
+                    source: creation_date
+                    direction: younger
+                    unit: days
+                    unit_count: 15
+              2:
+                action: delete_snapshots
+                description: >-
+                  Delete snapshots from the selected repository older than 7 days
+                  (based on creation_date), for 'curator-' prefixed snapshots.
+                options:
+                  repository: my_backup
+                  ignore_empty_list: true
+                filters:
+                  - filtertype: pattern
+                    kind: prefix
+                    value: curator-
+                    exclude:
+                  - filtertype: age
+                    source: creation_date
+                    direction: older
+                    unit: days
+                    unit_count: 7
+              3:
+                action: close
+                description: >-
+                  Close indices older than 30 days (based on index name), for filebeat-
+                  prefixed indices.
+                options:
+                  delete_aliases: false
+                  ignore_empty_list: true
+                filters:
+                  - filtertype: pattern
+                    kind: prefix
+                    value: filebeat-
+                  - filtertype: age
+                    source: name
+                    direction: older
+                    timestring: '%Y.%m.%d'
+                    unit: days
+                    unit_count: 30
+              4:
+                action: delete_indices
+                description: >-
+                  Delete indices older than 60 days (based on index name), for filebeat-
+                  prefixed indices. Ignore the error if the filter does not result in an
+                  actionable list of indices (ignore_empty_list) and exit cleanly.
+                options:
+                  ignore_empty_list: true
+                filters:
+                  - filtertype: pattern
+                    kind: prefix
+                    value: filebeat-
+                  - filtertype: age
+                    source: name
+                    direction: older
+                    timestring: '%Y.%m.%d'
+                    unit: days
+                    unit_count: 60
 
 Testing
 -------
