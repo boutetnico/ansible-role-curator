@@ -1,12 +1,15 @@
+[![tests](https://github.com/boutetnico/ansible-role-curator/workflows/Test%20ansible%20role/badge.svg)](https://github.com/boutetnico/ansible-role-curator/actions?query=workflow%3A%22Test+ansible+role%22)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-boutetnico.curator-blue.svg)](https://galaxy.ansible.com/boutetnico/curator)
+
 ansible-role-curator
 ====================
 
-This role installs and configures Curator.
+This role installs and configures [Curator](https://github.com/elastic/curator).
 
 Requirements
 ------------
 
-Ansible 2.6 or newer.
+Ansible 2.7 or newer.
 
 Supported Platforms
 -------------------
@@ -19,26 +22,26 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                     | Required | Default                         | Choices   | Comments                                      |
-|------------------------------|----------|---------------------------------|-----------|-----------------------------------------------|
-| curator_hosts                | true     | `[127.0.0.1]`                   | list      |                                               |
-| curator_port                 | true     | `9200`                          | int       |                                               |
-| curator_url_prefix           | true     |                                 | string    |                                               |
-| curator_use_ssl              | true     | `false`                         | bool      |                                               |
-| curator_certificate          | true     |                                 | string    | Path to CA certificate                        |
-| curator_client_cert          | true     |                                 | string    |                                               |
-| curator_client_key           | true     |                                 | string    |                                               |
-| curator_ssl_no_validate      | true     | `false`                         | bool      |                                               |
-| curator_http_auth            | true     |                                 | string    | Format: `user:password` for basic auth        |
-| curator_timeout              | true     | `30`                            | int       |                                               |
-| curator_master_only          | true     | `false`                         | bool      |                                               |
-| curator_log_path             | true     | `/var/log/curator`              | string    |                                               |
-| curator_log_file             | true     | `curator.log`                   | string    |                                               |
-| curator_log_level            | true     | `INFO`                          | string    |                                               |
-| curator_log_format           | true     | `default`                       | string    |                                               |
-| curator_log_blacklist        | true     | `[elasticsearch, urllib3]`      | list      |                                               |
-| curator_config_path          | true     | `/etc/curator`                  | string    |                                               |
-| curator_actions              | true     | `actions: {}`                   | dict      | Actions to perform. See `defaults/main.yml`   |
+| Variable                     | Required | Default                    | Choices   | Comments                                      |
+|------------------------------|----------|----------------------------|-----------|-----------------------------------------------|
+| curator_hosts                | true     | `[127.0.0.1]`              | list      |                                               |
+| curator_port                 | true     | `9200`                     | int       |                                               |
+| curator_url_prefix           | true     |                            | string    |                                               |
+| curator_use_ssl              | true     | `false`                    | bool      |                                               |
+| curator_certificate          | true     |                            | string    | Path to CA certificate.                       |
+| curator_client_cert          | true     |                            | string    |                                               |
+| curator_client_key           | true     |                            | string    |                                               |
+| curator_ssl_no_validate      | true     | `false`                    | bool      |                                               |
+| curator_http_auth            | true     |                            | string    | Format: `user:password` for basic auth.       |
+| curator_timeout              | true     | `30`                       | int       |                                               |
+| curator_master_only          | true     | `false`                    | bool      |                                               |
+| curator_log_path             | true     | `/var/log/curator`         | string    |                                               |
+| curator_log_file             | true     | `curator.log`              | string    |                                               |
+| curator_log_level            | true     | `INFO`                     | string    |                                               |
+| curator_log_format           | true     | `default`                  | string    |                                               |
+| curator_log_blacklist        | true     | `[elasticsearch, urllib3]` | list      |                                               |
+| curator_config_path          | true     | `/etc/curator`             | string    |                                               |
+| curator_actions              | true     | `actions: {}`              | dict      | Actions to perform. See `defaults/main.yml`.  |
 
 Dependencies
 ------------
