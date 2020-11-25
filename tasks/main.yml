@@ -7,8 +7,8 @@
 
 - name: Install curator
   pip:
-    name: elasticsearch-curator
-    state: present
+    name: "{{ curator_package }}"
+    state: "{{ curator_package_state }}"
 
 - name: Ensure curator log path exists
   file:
