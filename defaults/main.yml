@@ -1,4 +1,7 @@
 ---
+curator_package: elasticsearch-curator
+curator_package_state: present
+
 curator_hosts:
   - 127.0.0.1
 curator_port: 9200
