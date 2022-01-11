@@ -9,6 +9,8 @@ driver:
 platforms:
   - name: ansible-role-curator-debian-10
     image: debian:10
+  - name: ansible-role-curator-debian-11
+    image: debian:11
   - name: ansible-role-curator-ubuntu-1804
     image: ubuntu:18.04
   - name: ansible-role-curator-ubuntu-2004
