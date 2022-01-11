@@ -15,6 +15,7 @@ Supported Platforms
 -------------------
 
 - [Debian - 10 (Buster)](https://wiki.debian.org/DebianBuster)
+- [Debian - 11 (Bullseye)](https://wiki.debian.org/DebianBullseye)
 - [Ubuntu - 18.04 (Bionic Beaver)](http://releases.ubuntu.com/18.04/)
 - [Ubuntu - 20.04 (Focal Fossa)](http://releases.ubuntu.com/20.04/)
 

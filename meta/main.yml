@@ -13,6 +13,7 @@ galaxy_info:
         - focal
     - name: Debian
       versions:
+        - bullseye
         - buster
   galaxy_tags:
     - curator
