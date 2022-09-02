@@ -1,17 +1,17 @@
 ---
 - name: Install pip
-  apt:
+  ansible.builtin.apt:
     name: python{{ '3' if ansible_python.version.major == 3 else '' }}-pip
     state: present
     update_cache: true
 
 - name: Install curator
-  pip:
+  ansible.builtin.pip:
     name: "{{ curator_package }}"
     state: "{{ curator_package_state }}"
 
 - name: Ensure curator log path exists
-  file:
+  ansible.builtin.file:
     group: adm
     mode: 0755
     name: "{{ curator_log_path }}"
@@ -19,7 +19,7 @@
     state: directory
 
 - name: Ensure curator config path exists
-  file:
+  ansible.builtin.file:
     group: root
     mode: 0755
     name: "{{ curator_config_path }}"
@@ -27,13 +27,13 @@
     state: directory
 
 - name: Install curator config file
-  template:
+  ansible.builtin.template:
     dest: "{{ curator_config_path }}/curator.yml"
     mode: 0644
     src: curator.yml.j2
 
 - name: Install curator action file
-  template:
+  ansible.builtin.template:
     dest: "{{ curator_config_path }}/actionfile.yml"
     mode: 0644
     src: actionfile.yml.j2
