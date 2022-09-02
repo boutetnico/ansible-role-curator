@@ -3,7 +3,7 @@
   hosts: all
 
   roles:
-    - role: ansible-role-curator
+    - role: boutetnico.curator
       curator_actions:
         actions:
           1:
