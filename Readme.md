@@ -25,7 +25,7 @@ Role Variables
 | Variable                | Required | Default                    | Choices   | Comments                                     |
 |-------------------------|----------|----------------------------|-----------|----------------------------------------------|
 | curator_package         | true     | `elasticsearch-curator`    | string    |                                              |
-| curator_package_state   | true     | `present`                  | string    | Use `latest` to upgrade.                     |
+| curator_package_version | true     | `7.0.0`                    | string    |                                              |
 | curator_hosts           | true     | `[127.0.0.1]`              | list      |                                              |
 | curator_port            | true     | `9200`                     | int       |                                              |
 | curator_url_prefix      | true     |                            | string    |                                              |
@@ -34,7 +34,8 @@ Role Variables
 | curator_client_cert     | true     |                            | string    |                                              |
 | curator_client_key      | true     |                            | string    |                                              |
 | curator_ssl_no_validate | true     | `false`                    | bool      |                                              |
-| curator_http_auth       | true     |                            | string    | Format: `user:password` for basic auth.      |
+| curator_username        | true     |                            | string    | Username for basic auth.                     |
+| curator_password        | true     |                            | string    | Password for basic auth.                     |
 | curator_timeout         | true     | `30`                       | int       |                                              |
 | curator_master_only     | true     | `false`                    | bool      |                                              |
 | curator_log_path        | true     | `/var/log/curator`         | string    |                                              |

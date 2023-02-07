@@ -1,6 +1,6 @@
 ---
 curator_package: elasticsearch-curator
-curator_package_state: present
+curator_package_version: 7.0.0
 
 curator_hosts:
   - 127.0.0.1
@@ -11,7 +11,8 @@ curator_certificate: ""
 curator_client_cert: ""
 curator_client_key: ""
 curator_ssl_no_validate: false
-curator_http_auth: ""
+curator_username: ""
+curator_password: ""
 curator_timeout: 30
 curator_master_only: false
 
