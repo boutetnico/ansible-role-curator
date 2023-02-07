@@ -7,8 +7,6 @@ driver:
   name: docker
 
 platforms:
-  - name: ansible-role-curator-debian-10
-    image: debian:10
   - name: ansible-role-curator-debian-11
     image: debian:11
   - name: ansible-role-curator-ubuntu-2004
