@@ -8,7 +8,7 @@
 - name: Install curator
   ansible.builtin.pip:
     name: "{{ curator_package }}"
-    state: "{{ curator_package_state }}"
+    version: "{{ curator_package_version }}"
 
 - name: Ensure curator log path exists
   ansible.builtin.file:

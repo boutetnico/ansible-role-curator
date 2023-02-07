@@ -10,7 +10,8 @@ client:
   client_cert: {{ curator_client_cert }}
   client_key: {{ curator_client_key }}
   ssl_no_validate: {{ curator_ssl_no_validate | lower }}
-  http_auth: {{ curator_http_auth }}
+  username: {{ curator_username }}
+  password: {{ curator_password }}
   timeout: {{ curator_timeout }}
   master_only: {{ curator_master_only | lower }}
 
