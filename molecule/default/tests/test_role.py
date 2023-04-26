@@ -5,20 +5,27 @@ import os
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
+    os.environ["MOLECULE_INVENTORY_FILE"]
+).get_hosts("all")
 
 
-@pytest.mark.parametrize('name', [
-  ('elasticsearch-curator'),
-])
+@pytest.mark.parametrize(
+    "name",
+    [
+        ("elasticsearch-curator"),
+    ],
+)
 def test_curator_is_installed(host, name):
-    packages = host.pip_package.get_packages(pip_path='pip3')
+    packages = host.pip.get_packages(pip_path="pip3")
     assert name in packages
 
 
-@pytest.mark.parametrize('username,groupname,path', [
-  ('root', 'root', '/etc/curator/curator.yml'),
-])
+@pytest.mark.parametrize(
+    "username,groupname,path",
+    [
+        ("root", "root", "/etc/curator/curator.yml"),
+    ],
+)
 def test_curator_config_file(host, username, groupname, path):
     curator_config = host.file(path)
     assert curator_config.exists
@@ -27,9 +34,12 @@ def test_curator_config_file(host, username, groupname, path):
     assert curator_config.group == groupname
 
 
-@pytest.mark.parametrize('username,groupname,path', [
-  ('root', 'adm', '/var/log/curator'),
-])
+@pytest.mark.parametrize(
+    "username,groupname,path",
+    [
+        ("root", "adm", "/var/log/curator"),
+    ],
+)
 def test_curator_log_directory(host, username, groupname, path):
     curator_config = host.file(path)
     assert curator_config.exists
@@ -38,9 +48,12 @@ def test_curator_log_directory(host, username, groupname, path):
     assert curator_config.group == groupname
 
 
-@pytest.mark.parametrize('username,groupname,path', [
-  ('root', 'root', '/etc/curator/actionfile.yml'),
-])
+@pytest.mark.parametrize(
+    "username,groupname,path",
+    [
+        ("root", "root", "/etc/curator/actionfile.yml"),
+    ],
+)
 def test_curator_action_file(host, username, groupname, path):
     curator_action = host.file(path)
     assert curator_action.exists
