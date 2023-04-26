@@ -13,7 +13,7 @@
 - name: Ensure curator log path exists
   ansible.builtin.file:
     group: adm
-    mode: 0755
+    mode: "0755"
     name: "{{ curator_log_path }}"
     owner: root
     state: directory
@@ -21,7 +21,7 @@
 - name: Ensure curator config path exists
   ansible.builtin.file:
     group: root
-    mode: 0755
+    mode: "0755"
     name: "{{ curator_config_path }}"
     owner: root
     state: directory
@@ -29,11 +29,11 @@
 - name: Install curator config file
   ansible.builtin.template:
     dest: "{{ curator_config_path }}/curator.yml"
-    mode: 0644
+    mode: "0644"
     src: curator.yml.j2
 
 - name: Install curator action file
   ansible.builtin.template:
     dest: "{{ curator_config_path }}/actionfile.yml"
-    mode: 0644
+    mode: "0644"
     src: actionfile.yml.j2
