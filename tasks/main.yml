@@ -1,14 +1,22 @@
 ---
 - name: Install pip
   ansible.builtin.apt:
-    name: python{{ '3' if ansible_python.version.major == 3 else '' }}-pip
+    name: python3-pip
     state: present
     update_cache: true
 
-- name: Install curator
+- name: Install curator python package (Debian Bookworm)
   ansible.builtin.pip:
     name: "{{ curator_package }}"
     version: "{{ curator_package_version }}"
+    extra_args: --break-system-packages
+  when: ansible_distribution_release == 'bookworm'
+
+- name: Install curator python package
+  ansible.builtin.pip:
+    name: "{{ curator_package }}"
+    version: "{{ curator_package_version }}"
+  when: ansible_distribution_release != 'bookworm'
 
 - name: Ensure curator log path exists
   ansible.builtin.file:
