@@ -15,6 +15,7 @@ Supported Platforms
 -------------------
 
 - [Debian - 11 (Bullseye)](https://wiki.debian.org/DebianBullseye)
+- [Debian - 12 (Bookworm)](https://wiki.debian.org/DebianBookworm)
 - [Ubuntu - 20.04 (Focal Fossa)](http://releases.ubuntu.com/20.04/)
 - [Ubuntu - 22.04 (Jammy Jellyfish)](http://releases.ubuntu.com/22.04/)
 
