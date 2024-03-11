@@ -1,19 +1,25 @@
 ---
 # Remember, leave a key empty if there is no value.  None will be a string,
 # not a Python "NoneType"
-client:
-  hosts: {{ curator_hosts | to_json }}
-  port: {{ curator_port }}
-  url_prefix: {{ curator_url_prefix }}
-  use_ssl: {{ curator_use_ssl | lower }}
-  certificate: {{ curator_certificate }}
-  client_cert: {{ curator_client_cert }}
-  client_key: {{ curator_client_key }}
-  ssl_no_validate: {{ curator_ssl_no_validate | lower }}
-  username: {{ curator_username }}
-  password: {{ curator_password }}
-  timeout: {{ curator_timeout }}
-  master_only: {{ curator_master_only | lower }}
+elasticsearch:
+  client:
+    hosts: {{ curator_hosts | to_json }}
+    cloud_id: {{ curator_cloud_id }}
+    ca_certs: {{ curator_ca_certs }}
+    client_cert: {{ curator_client_cert }}
+    client_key: {{ curator_client_key }}
+    verify_certs: {{ curator_verify_certs }}
+    request_timeout: {{ curator_request_timeout }}
+  other_settings:
+    master_only: {{ curator_master_only }}
+    username: {{ curator_username }}
+    password: {{ curator_password }}
+{% if curator_api_key %}
+    api_key: {{ curator_api_key }}
+      id: {{ curator_api_key_id }}
+      api_key: {{ curator_api_key_api_key }}
+      token: {{ curator_api_key_token }}
+{% endif %}
 
 logging:
   loglevel: {{ curator_log_level }}

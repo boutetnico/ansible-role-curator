@@ -26,18 +26,20 @@ Role Variables
 |-------------------------|----------|----------------------------|-----------|----------------------------------------------|
 | curator_package         | true     | `elasticsearch-curator`    | string    |                                              |
 | curator_package_version | true     | `8.0.10`                   | string    |                                              |
-| curator_hosts           | true     | `[127.0.0.1]`              | list      |                                              |
-| curator_port            | true     | `9200`                     | int       |                                              |
-| curator_url_prefix      | true     |                            | string    |                                              |
-| curator_use_ssl         | true     | `false`                    | bool      |                                              |
-| curator_certificate     | true     |                            | string    | Path to CA certificate.                      |
+| curator_hosts           | true     | `[http://127.0.0.1:9200]`  | list      |                                              |
+| curator_cloud_id        | true     |                            | string    |                                              |
+| curator_ca_certs        | true     |                            | string    |                                              |
 | curator_client_cert     | true     |                            | string    |                                              |
 | curator_client_key      | true     |                            | string    |                                              |
-| curator_ssl_no_validate | true     | `false`                    | bool      |                                              |
+| curator_verify_certs    | true     | `true`                     | bool      |                                              |
+| curator_request_timeout | true     | `30`                       | int       |                                              |
+| curator_master_only     | true     | `false`                    | bool      |                                              |
 | curator_username        | true     |                            | string    | Username for basic auth.                     |
 | curator_password        | true     |                            | string    | Password for basic auth.                     |
-| curator_timeout         | true     | `30`                       | int       |                                              |
-| curator_master_only     | true     | `false`                    | bool      |                                              |
+| curator_api_key         | true     |                            | string    |                                              |
+| curator_api_key_id      | true     |                            | string    |                                              |
+| curator_api_key_api_key | true     |                            | string    |                                              |
+| curator_api_key_token   | true     |                            | string    |                                              |
 | curator_log_path        | true     | `/var/log/curator`         | string    |                                              |
 | curator_log_file        | true     | `curator.log`              | string    |                                              |
 | curator_log_level       | true     | `INFO`                     | string    |                                              |
