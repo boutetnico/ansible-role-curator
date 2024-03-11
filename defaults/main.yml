@@ -3,25 +3,27 @@ curator_package: elasticsearch-curator
 curator_package_version: 8.0.10
 
 curator_hosts:
-  - 127.0.0.1
-curator_port: 9200
-curator_url_prefix: ""
-curator_use_ssl: false
-curator_certificate: ""
+  - http://127.0.0.1:9200
+curator_cloud_id: ""
+curator_ca_certs: ""
 curator_client_cert: ""
 curator_client_key: ""
-curator_ssl_no_validate: false
+curator_verify_certs: true
+curator_request_timeout: 30
+curator_master_only: false
 curator_username: ""
 curator_password: ""
-curator_timeout: 30
-curator_master_only: false
+curator_api_key: ""
+curator_api_key_id: ""
+curator_api_key_api_key: ""
+curator_api_key_token: ""
 
 curator_log_path: /var/log/curator
 curator_log_file: curator.log
 curator_log_level: INFO
 curator_log_format: default
 curator_log_blacklist:
-  - elasticsearch
+  - elastic_transport
   - urllib3
 
 curator_config_path: /etc/curator
