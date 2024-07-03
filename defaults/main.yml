@@ -27,7 +27,7 @@ curator_log_blacklist:
 
 curator_config_path: /etc/curator
 
-curator_systemd_config:
+curator_systemd_config: {}
 # curator.service:
 #   Unit:
 #     Description: Run of Elasticsearch Curator
