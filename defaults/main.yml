@@ -28,7 +28,7 @@ curator_log_blacklist:
 curator_config_path: /etc/curator
 
 curator_systemd_config:
-# "curator.service":
+# curator.service:
 #   Unit:
 #     Description: Run of Elasticsearch Curator
 #     Wants: curator.timer
@@ -37,7 +37,7 @@ curator_systemd_config:
 #     ExecStart: /usr/local/bin/curator --config {{ curator_config_path }}/curator.yml {{ curator_config_path }}/actionfile.yml
 #   Install:
 #     WantedBy: multi-user.target
-# "curator.timer":
+# curator.timer:
 #   Unit:
 #     Description: Hourly run of Elasticsearch Curator
 #     Requires: curator.service
