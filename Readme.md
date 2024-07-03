@@ -45,6 +45,7 @@ Role Variables
 | curator_log_format      | true     | `default`                  | string    |                                              |
 | curator_log_blacklist   | true     | `[elasticsearch, urllib3]` | list      |                                              |
 | curator_config_path     | true     | `/etc/curator`             | string    |                                              |
+| curator_systemd_config  | true     | `{}`                       | dict      |                                              |
 | curator_actions         | true     | `actions: {}`              | dict      | Actions to perform. See `defaults/main.yml`. |
 
 Dependencies
