@@ -46,3 +46,22 @@
     dest: "{{ curator_config_path }}/actionfile.yml"
     mode: "0644"
     src: actionfile.yml.j2
+
+- name: Ensure systemd configuration files are installed
+  ansible.builtin.template:
+    dest: "/etc/systemd/system/{{ item.key }}"
+    group: root
+    mode: "0644"
+    owner: root
+    src: systemd.conf.j2
+  loop: "{{ curator_systemd_config | dict2items }}"
+  when: curator_systemd_config
+  notify: Reload systemd daemon
+
+- name: Ensure systemd unit are enabled and running
+  ansible.builtin.systemd_service:
+    enabled: true
+    name: "{{ item.key }}"
+    state: started
+  loop: "{{ curator_systemd_config | dict2items }}"
+  when: curator_systemd_config
