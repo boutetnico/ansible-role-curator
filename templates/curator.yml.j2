@@ -23,6 +23,6 @@ elasticsearch:
 
 logging:
   loglevel: {{ curator_log_level }}
-  logfile: {{ curator_log_path }}/{{ curator_log_file }}
+  logfile: {{ curator_log_file }}
   logformat: {{ curator_log_format }}
   blacklist: {{ curator_log_blacklist | to_json }}

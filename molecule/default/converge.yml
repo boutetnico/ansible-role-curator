@@ -4,6 +4,7 @@
 
   roles:
     - role: boutetnico.curator
+      curator_log_file: /var/log/curator/curator.log
       curator_actions:
         actions:
           1:
