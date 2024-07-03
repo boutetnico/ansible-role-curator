@@ -18,8 +18,7 @@ curator_api_key_id: ""
 curator_api_key_api_key: ""
 curator_api_key_token: ""
 
-curator_log_path: /var/log/curator
-curator_log_file: curator.log
+curator_log_file: ""
 curator_log_level: INFO
 curator_log_format: default
 curator_log_blacklist:

@@ -40,8 +40,7 @@ Role Variables
 | curator_api_key_id      | true     |                            | string    |                                              |
 | curator_api_key_api_key | true     |                            | string    |                                              |
 | curator_api_key_token   | true     |                            | string    |                                              |
-| curator_log_path        | true     | `/var/log/curator`         | string    |                                              |
-| curator_log_file        | true     | `curator.log`              | string    |                                              |
+| curator_log_file        | true     |                            | string    | Absolute file path or empty string (stdout). |
 | curator_log_level       | true     | `INFO`                     | string    |                                              |
 | curator_log_format      | true     | `default`                  | string    |                                              |
 | curator_log_blacklist   | true     | `[elasticsearch, urllib3]` | list      |                                              |

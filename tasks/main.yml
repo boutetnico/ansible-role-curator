@@ -22,9 +22,10 @@
   ansible.builtin.file:
     group: adm
     mode: "0755"
-    name: "{{ curator_log_path }}"
     owner: root
+    path: "{{ curator_log_file | dirname }}"
     state: directory
+  when: curator_log_file | length > 0
 
 - name: Ensure curator config path exists
   ansible.builtin.file:
