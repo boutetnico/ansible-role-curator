@@ -5,18 +5,18 @@
     state: present
     update_cache: true
 
-- name: Install curator python package (Debian Bookworm)
+- name: Install curator python package
   ansible.builtin.pip:
     name: "{{ curator_package }}"
     version: "{{ curator_package_version }}"
     extra_args: --break-system-packages
-  when: ansible_distribution_release == 'bookworm'
+  when: ansible_distribution_release in ['bookworm', 'noble']
 
 - name: Install curator python package
   ansible.builtin.pip:
     name: "{{ curator_package }}"
     version: "{{ curator_package_version }}"
-  when: ansible_distribution_release != 'bookworm'
+  when: not ansible_distribution_release in ['bookworm', 'noble']
 
 - name: Ensure curator log path exists
   ansible.builtin.file:
