@@ -25,7 +25,7 @@ Role Variables
 | Variable                | Required | Default                    | Choices   | Comments                                     |
 |-------------------------|----------|----------------------------|-----------|----------------------------------------------|
 | curator_package         | true     | `elasticsearch-curator`    | string    |                                              |
-| curator_package_version | true     | `8.0.20`                   | string    |                                              |
+| curator_package_version | true     | `8.0.21`                   | string    |                                              |
 | curator_hosts           | true     | `[http://127.0.0.1:9200]`  | list      |                                              |
 | curator_cloud_id        | true     |                            | string    |                                              |
 | curator_ca_certs        | true     |                            | string    |                                              |
