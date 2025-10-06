@@ -14,7 +14,6 @@ galaxy_info:
     - name: Debian
       versions:
         - bookworm
-        - bullseye
   galaxy_tags:
     - curator
     - elastic
