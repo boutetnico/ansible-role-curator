@@ -1,6 +1,6 @@
 ---
 curator_package: elasticsearch-curator
-curator_package_version: 8.0.21
+curator_package_version: 9.0.0
 
 curator_hosts:
   - http://127.0.0.1:9200
