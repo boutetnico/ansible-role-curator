@@ -7,16 +7,9 @@
 
 - name: Install curator python package
   ansible.builtin.pip:
+    break_system_packages: true
     name: "{{ curator_package }}"
     version: "{{ curator_package_version }}"
-    extra_args: --break-system-packages
-  when: ansible_facts['distribution_release'] in ['bookworm', 'noble']
-
-- name: Install curator python package
-  ansible.builtin.pip:
-    name: "{{ curator_package }}"
-    version: "{{ curator_package_version }}"
-  when: not ansible_facts['distribution_release'] in ['bookworm', 'noble']
 
 - name: Ensure curator log path exists
   ansible.builtin.file:
