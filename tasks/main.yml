@@ -31,8 +31,9 @@
 - name: Install curator config file
   ansible.builtin.template:
     dest: "{{ curator_config_path }}/curator.yml"
-    mode: "0644"
+    mode: "0640"
     src: curator.yml.j2
+  no_log: true
 
 - name: Install curator action file
   ansible.builtin.template:
