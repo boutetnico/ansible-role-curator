@@ -1,0 +1,14 @@
+---
+- name: Cleanup
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Remove Elasticsearch container
+      community.docker.docker_container:
+        name: elasticsearch-test
+        state: absent
+
+    - name: Remove Docker network
+      community.docker.docker_network:
+        name: curator-test-network
+        state: absent

@@ -1,0 +1,35 @@
+---
+- name: Prepare
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create Docker network for test
+      community.docker.docker_network:
+        name: curator-test-network
+        state: present
+
+    - name: Create Elasticsearch container
+      community.docker.docker_container:
+        name: elasticsearch-test
+        image: docker.elastic.co/elasticsearch/elasticsearch:9.2.1
+        state: started
+        env:
+          discovery.type: single-node
+          xpack.security.enabled: "false"
+          xpack.security.http.ssl.enabled: "false"
+          xpack.security.transport.ssl.enabled: "false"
+          ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+        networks:
+          - name: curator-test-network
+        ports:
+          - "9200:9200"
+        detach: true
+
+    - name: Wait for Elasticsearch to be ready on host
+      ansible.builtin.uri:
+        url: http://localhost:9200/_cluster/health?wait_for_status=green&timeout=30s
+        status_code: 200
+      register: curator_es_health
+      until: curator_es_health.status == 200
+      retries: 30
+      delay: 5

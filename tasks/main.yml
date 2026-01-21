@@ -52,10 +52,18 @@
   when: curator_systemd_config | length > 0
   notify: Reload systemd daemon
 
-- name: Ensure systemd unit are enabled and running
+- name: Ensure systemd units are enabled
   ansible.builtin.systemd_service:
     enabled: true
     name: "{{ item.key }}"
-    state: started
   loop: "{{ curator_systemd_config | dict2items }}"
   when: curator_systemd_config | length > 0
+
+- name: Ensure systemd timers are started
+  ansible.builtin.systemd_service:
+    name: "{{ item.key }}"
+    state: started
+  loop: "{{ curator_systemd_config | dict2items }}"
+  when:
+    - curator_systemd_config | length > 0
+    - item.key is search('\.timer$')

@@ -16,6 +16,21 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     cgroupns_mode: host
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    networks:
+      - name: curator-test-network
+  - name: ansible-role-curator-ubuntu-2204
+    image: ubuntu:22.04
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    networks:
+      - name: curator-test-network
   - name: ansible-role-curator-ubuntu-2404
     image: ubuntu:24.04
     command: /lib/systemd/systemd
@@ -25,6 +40,9 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     cgroupns_mode: host
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    networks:
+      - name: curator-test-network
 
 provisioner:
   name: ansible
